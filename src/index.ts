@@ -2,6 +2,8 @@ import express, { type Request, type Response } from "express";
 import swaggerRouter from "./routes/swagger.router.js";
 import cors from "cors"
 import productosRouter from "./routes/product.routes.js";
+import salesRouter from "./routes/sale.routes.js";
+
 
 const port = process.env.PORT; 
 
@@ -10,7 +12,7 @@ const app = express();
 // Middlewares 
 app.use(express.json());
 app.use(cors())
-
+app.use("/api", salesRouter);
 app.use("/api/docs", swaggerRouter) 
 app.use("/api", productosRouter)
 
