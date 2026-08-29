@@ -24,6 +24,83 @@
         }
       }
     },
+    "/api/sales": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Obtiene todas las ventas con el nombre del cliente",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Crea una nueva venta",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fecha_venta": {
+                  "example": "any"
+                },
+                "id_cliente": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/sales/{id}": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Obtiene una venta por su id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/menu": {
       "get": {
         "tags": [
@@ -31,6 +108,23 @@
         ],
         "summary": "Obtiene la lista completa de productos",
         "description": "",
+        "parameters": [
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
